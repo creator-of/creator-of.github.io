@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading" style="font-size: 20px;">Unrevealed crypto artist living inside the renascence tech era.</h2>
+    <ul class="post-list">
+      {% assign sortedPosts = site.posts | sort: 'title' | reverse %} 
+      {% for post in sortedPosts %}
+      <li>
+          <a class="post-link" href="{{ post.url | relative_url }}" style="width: 35%; background: #000; color:#fff; padding: 5px;">
+            {{ post.title | escape }}<small></small><br />
+          </a>
+        
+          <a class="post-link" href="{{ post.url | relative_url }}">
+          <img src="{{ post.thumbnail }}" />
+          </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+  {%- endif -%}
+
+</div>
